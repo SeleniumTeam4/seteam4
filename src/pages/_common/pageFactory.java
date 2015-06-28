@@ -1,8 +1,8 @@
 package _common;
 
 import org.openqa.selenium.WebDriver;
-
 import article.newArticlePage;
+import categoryManager.*;
 
 
 public class pageFactory {
@@ -16,5 +16,10 @@ public class pageFactory {
 	
 	public static newArticlePage getNewArticlePage(WebDriver driver){
 		return new newArticlePage(driver);
+	}
+	
+	//trung.tran: add below line.
+	public static addNewCategoryPage getNewCategory(WebDriver driver){
+		return new addNewCategoryPage(driver);
 	}
 }
