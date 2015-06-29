@@ -46,8 +46,18 @@ public class articleManagerArticle extends _common.absPage {
 		return messageExist;
 	}
 	
+	public boolean checkArticleUnPublishedMessageAppear(){
+		boolean messageExist =driver.getPageSource().contains("article unpublished.");
+		return messageExist;
+	}
+	
 	public void publishArticle(String articleName){
 		clickTableCell(driver, "//a[contains(text(),'"+ articleName+ "')]/../following-sibling::td//a/span");
+		waitForPageLoad(driver);
+	}
+	
+	public void unPublishArticle(String articleTitle){
+		clickTableCell(driver, "//a[contains(text(),'"+ articleTitle+ "')]/../following-sibling::td//a/span");
 		waitForPageLoad(driver);
 	}
 	

@@ -28,7 +28,7 @@ public class TC003 {
 	}
 	
 	@Test
-	public void createNewArticle(){
+	public void unPublishedArticle(){
 		/*Navigate to the URL: http://vntesters.com/Joomla/administrator
 		Enter valid username into Username field
 		Enter valid password into Password field
