@@ -11,7 +11,7 @@ import _common.browser;
 import _common.homePage;
 import _common.loginPage;
 
-public class TC004 {
+public class TC004_UnpublishArticle {
 	WebDriver driver;
 	private loginPage objadminLogin = new loginPage(browser.getDriver());
 	private absPage objAbsPage = new absPage();
@@ -28,7 +28,7 @@ public class TC004 {
 	}
 	
 	@Test(description = "user can unpublish a published article")
-	public void unPublishedArticle(){
+	public void publishedArticle(){
 		/*Navigate to the URL: http://vntesters.com/Joomla/administrator
 		Enter valid username into Username field
 		Enter valid password into Password field
