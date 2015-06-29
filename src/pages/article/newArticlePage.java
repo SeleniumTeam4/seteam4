@@ -3,6 +3,8 @@ package article;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import _common.pageFactory;
+
 public class newArticlePage extends _common.absPage {
 	WebDriver driver;
 	public newArticlePage(WebDriver driver){
@@ -17,9 +19,10 @@ public class newArticlePage extends _common.absPage {
 		driver.switchTo().defaultContent();
 	}
 	
-	public void clickSaveAndCloseButton(){
+	public articleManagerArticle clickSaveAndCloseButton(){
 		waitForControl(driver, saveAndCloseButton);
 		driver.findElement(By.xpath(saveAndCloseButton)).click();
+		return pageFactory.getArticleManagerArticlePage(driver);
 	}
 	
 	private String titleTextbox = "//input[@id='jform_title']";

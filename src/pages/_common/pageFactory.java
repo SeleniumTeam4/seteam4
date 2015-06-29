@@ -2,6 +2,7 @@ package _common;
 
 import org.openqa.selenium.WebDriver;
 
+import article.articleManagerArticle;
 import article.newArticlePage;
 
 
@@ -16,5 +17,9 @@ public class pageFactory {
 	
 	public static newArticlePage getNewArticlePage(WebDriver driver){
 		return new newArticlePage(driver);
+	}
+	
+	public static articleManagerArticle getArticleManagerArticlePage(WebDriver driver){
+		return new articleManagerArticle(driver);
 	}
 }

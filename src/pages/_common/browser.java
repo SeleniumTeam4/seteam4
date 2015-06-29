@@ -13,6 +13,7 @@ public class browser {
 	public static void open(String url)
 	{
 		driver.get(url);
+		driver.manage().window().maximize();
 	}
 	public static void close()
 	{

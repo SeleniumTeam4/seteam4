@@ -16,6 +16,10 @@ public class absPage {
 		
 	}
 	
+	public void waitForPageLoad(WebDriver driver){
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	
 	
 	public void click(WebDriver driver, String controlName){
 		WebElement element = findElement(driver, controlName);
