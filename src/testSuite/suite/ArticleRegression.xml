@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name = "article tests">
+	<test name = "all article test cases">
+		<packages>
+			<package name = "article"></package>
+		</packages>
+	</test>
+</suite>

@@ -74,7 +74,7 @@ public class TC004 {
 	@AfterMethod
 	public void afterMethod(){
 		driver = browser.getDriver();
-		driver.close();
-		driver.quit();
+		driver.manage().deleteAllCookies();
+		//driver.quit();
 	}
 }
