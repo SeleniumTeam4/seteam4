@@ -3,6 +3,8 @@ package article;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import com.thoughtworks.selenium.webdriven.commands.WaitForPageToLoad;
 
 public class articleManagerArticlePage extends _common.absPage {
@@ -67,10 +69,17 @@ public class articleManagerArticlePage extends _common.absPage {
 		return actualStatus;
 	}
 	
+	public void deleteAllArticles(){
+		click(driver,checkAllArticlesCheckbox);
+		click(driver,trashSpan);
+		waitForPageLoad(driver);
+	}
+	
 	private String filterTextbox = "//input[@id='filter_search']";
 	private String searchButton = "//button[@class='btn']";
 	private String authorDropdown = "//select[@name='filter_author_id']";
 	private String displayNumberDropdown = "//select[@id='limit']";
 	private String statusDropdown = "//select[@name='filter_published']";
-	//private String articleSavedMessage = "//li[text()='Article successfully saved']";
+	private String checkAllArticlesCheckbox = "//input[@title='Check All']";
+	private String trashSpan = "//span[@class='icon-32-trash']";
 }

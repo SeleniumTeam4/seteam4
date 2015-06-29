@@ -51,6 +51,7 @@ public class TC003 {
 		//Verify the article is saved successfully
 		//Verify saved message appear
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
+		//objArticleManagerArticle.checkPageMessageDisplay(driver, "Article successfully saved");
 		
 		//Filter article by author
 		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid,"All");
@@ -65,7 +66,8 @@ public class TC003 {
 		//Verify the article is published successfully
 		//Verify article published message displays
 		Assert.assertEquals(objArticleManagerArticle.checkArticlePublishedMessageAppear(), true, "article published message appears");
-		
+		//objArticleManagerArticle.checkPageMessageDisplay(driver, "article published.");
+				
 		//Verify article status is published
 		Assert.assertEquals(objArticleManagerArticle.getArticleState("selenium team 4 tc3 "+currentDate), "state publish", "article is published");
 		

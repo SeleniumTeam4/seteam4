@@ -52,8 +52,8 @@ public class TC001 {
 		objArticleManagerArticle = objNewArticlePage.clickSaveAndCloseButton();
 		
 		//Verify the article is saved successfully
-		
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
+		//objArticleManagerArticle.checkPageMessageDisplay(driver, "Article successfully saved");
 		
 		//objAbsPage.waitForPageLoad(driver);
 		objArticleManagerArticle.searchArticle("selenium team 4"+currentDate,commonVariables.userNameValid,"All");

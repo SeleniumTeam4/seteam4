@@ -51,6 +51,7 @@ public class TC004 {
 		//Verify the article is saved successfully
 		//Verify saved message appear
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
+		//objArticleManagerArticle.checkPageMessageDisplay(driver, "Article successfully saved");
 		
 		//Filter article by author
 		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid,"All");
@@ -62,9 +63,10 @@ public class TC004 {
 		Click on 'Publish' icon of the top right toolbar*/
 		objArticleManagerArticle.unPublishArticle("selenium team 4 tc4 "+currentDate);
 		
-		//Verify the article is published successfully
+		//Verify the article is unpublished successfully
 		//Verify article published message displays
 		Assert.assertEquals(objArticleManagerArticle.checkArticleUnPublishedMessageAppear(), true, "article unpublished message appears");
+		//objArticleManagerArticle.checkPageMessageDisplay(driver, "article unpublished.");
 		
 		//Verify article status is published
 		Assert.assertEquals(objArticleManagerArticle.getArticleState("selenium team 4 tc4 "+currentDate), "state unpublish", "article is unpublished");
