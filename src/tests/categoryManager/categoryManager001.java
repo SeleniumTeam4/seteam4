@@ -20,18 +20,18 @@ public class categoryManager001 {
 	
 	@BeforeMethod
 	public void beforeMethod(){
-		browser.getDriver();
-		browser.open(dataTest.commonVariables.initialPage);
-		
+		//browser.getDriver();
+		//browser.open(dataTest.commonVariables.initialPage);
+	}	
 	@Test
 	public void addNewCategory(){
 		
-		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
+		/*objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		objAddNewCategoryPage = objhomepage.clickAddNewCategory();
 		objAddNewCategoryPage.createNewArticle("selenium team 4"+currentDate,"Triet content");
-		objNewArticlePage.clickSaveAndCloseButton();
+		objNewArticlePage.clickSaveAndCloseButton();*/
 			
-	}
+	
 		
 	}
 	

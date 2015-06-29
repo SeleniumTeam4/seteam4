@@ -13,7 +13,9 @@ public class homePage extends _common.absPage {
 	}
 	
 	public newArticlePage clickAddNewArticle(){
-		driver.findElement(By.xpath(addNewArticleLink)).click();
+		click(driver, contentMenu);
+		click(driver, articleManagerMenuItem);
+		driver.findElement(By.xpath(newSpan)).click();
 		return pageFactory.getNewArticlePage(driver);
 	}
 	
@@ -31,7 +33,9 @@ public class homePage extends _common.absPage {
 	
 	//Interface lists:
 	private String logOutLink= "//span[@class='logout']/a";
-	private String addNewArticleLink = "//span[contains(text(),'Add New Article')]";
+	private String contentMenu = "//a[contains(text(),'Content')]";
+	private String articleManagerMenuItem = "//a[contains(text(),'Article Manager')]";
+	private String newSpan = "//span[@class='icon-32-new']";
 	private String categoryManagerLink = "//a[.='Category Manager']";
 	
 }
