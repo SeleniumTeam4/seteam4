@@ -2,6 +2,8 @@ package _common;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import article.articleManagerArticle;
 import article.newArticlePage;
 import categoryManager.*;
 import _common.pageFactory;
@@ -12,9 +14,14 @@ public class homePage extends _common.absPage {
 		this.driver = driver;
 	}
 	
-	public newArticlePage clickAddNewArticle(){
+	public articleManagerArticle goToArticleManagerArticlePage(){
 		click(driver, contentMenu);
 		click(driver, articleManagerMenuItem);
+		return pageFactory.getArticleManagerArticlePage(driver);
+	}
+	
+	public newArticlePage clickAddNewArticle(){
+		goToArticleManagerArticlePage();
 		driver.findElement(By.xpath(newSpan)).click();
 		return pageFactory.getNewArticlePage(driver);
 	}

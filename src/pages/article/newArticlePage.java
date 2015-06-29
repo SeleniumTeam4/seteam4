@@ -16,7 +16,14 @@ public class newArticlePage extends _common.absPage {
 		type(driver,titleTextbox,articleTitle);
 		driver.findElement(By.xpath(toggleEditorLink)).click();
 		type(driver,aritleContentTextbox,articleContent);
-		driver.switchTo().defaultContent();
+	}
+	
+	public void createNewArticle(String articleTitle, String articleContent,String statusType){
+		waitForControl(driver, titleTextbox);
+		type(driver,titleTextbox,articleTitle);
+		select(driver, statusDropDown, statusType);
+		driver.findElement(By.xpath(toggleEditorLink)).click();
+		type(driver,aritleContentTextbox,articleContent);
 	}
 	
 	public articleManagerArticle clickSaveAndCloseButton(){
@@ -29,4 +36,5 @@ public class newArticlePage extends _common.absPage {
 	private String aritleContentTextbox = "//textarea[@id='jform_articletext']";
 	private String toggleEditorLink = "//a[@title='Toggle editor']";
 	private String saveAndCloseButton = "//span[@class ='icon-32-save']";
+	private String statusDropDown = "//select[@id='jform_state']";
 }

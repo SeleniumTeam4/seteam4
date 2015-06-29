@@ -7,6 +7,7 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class absPage {
 			
@@ -31,9 +32,19 @@ public class absPage {
 		element.sendKeys(value);
 	}
 	
+	public void select(WebDriver driver, String controlName, String value){
+		Select element = new Select(findElement(driver, controlName));
+		element.selectByVisibleText(value);
+	}
+	
 	
 	public WebElement findElement(WebDriver driver, String control){
 		return driver.findElement(By.xpath(control));
+	}
+	
+	public void clickTableCell(WebDriver driver, String tableCellXpath){
+		WebElement cell = findElement(driver, tableCellXpath);
+		cell.click();
 	}
 	
 	public String getCurrentDate(){

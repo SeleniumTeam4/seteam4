@@ -11,7 +11,7 @@ import _common.browser;
 import _common.homePage;
 import _common.loginPage;
 
-public class TC001 {
+public class TC003 {
 	WebDriver driver;
 	private loginPage objadminLogin = new loginPage(browser.getDriver());
 	private absPage objAbsPage = new absPage();
@@ -45,7 +45,7 @@ public class TC001 {
 		Select an item from the 'Category' dropdown list
 		Enter value on 'Article Text' text area*/
 				
-		objNewArticlePage.createNewArticle("selenium team 4"+currentDate,"Triet content");
+		objNewArticlePage.createNewArticle("selenium team 4 tc3 "+currentDate,"Triet content","Unpublished");
 		
 		//Click on 'Save & Close' icon of the top right toolbar
 		
@@ -56,10 +56,16 @@ public class TC001 {
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
 		
 		//objAbsPage.waitForPageLoad(driver);
-		objArticleManagerArticle.searchArticle("selenium team 4"+currentDate,commonVariables.userNameValid,"All");
+		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid,"All");
 		//objAbsPage.waitForPageLoad(driver);
-		Assert.assertEquals(objArticleManagerArticle.checkArticleExists("selenium team 4"+currentDate), true, "Article saved successfully");
-				
+		Assert.assertEquals(objArticleManagerArticle.checkArticleExists("selenium team 4 tc3 "+currentDate), true, "Article saved successfully");
+		
+		objArticleManagerArticle.publishArticle("selenium team 4 tc3 "+currentDate);
+		
+		Assert.assertEquals(objArticleManagerArticle.checkArticlePublishedMessageAppear(), true, "article published message appears");
+		
+		Assert.assertEquals(objArticleManagerArticle.getArticleState("selenium team 4 tc3 "+currentDate), "state publish", "article is published");
+		
 	}
 	
 	@AfterMethod
