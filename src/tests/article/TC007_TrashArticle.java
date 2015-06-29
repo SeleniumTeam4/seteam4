@@ -73,7 +73,8 @@ public class TC007_TrashArticle {
 		
 		//Verify article displays
 		Assert.assertEquals(objArticleManagerArticle.checkArticleExists("selenium team 4 tc7 "+currentDate), true, "Article trashed successfully");
-				
+		
+		browser.backToMainWindow();
 	}
 	
 	@AfterMethod

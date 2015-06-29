@@ -5,12 +5,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import _common.joomlaHelpPage;
+import _common.pageFactory;
+
 import com.thoughtworks.selenium.webdriven.commands.WaitForPageToLoad;
 
 public class articleManagerArticlePage extends _common.absPage {
 	WebDriver driver;
 	public articleManagerArticlePage(WebDriver driver){
 		this.driver = driver;
+	}
+	
+	public joomlaHelpPage goToJoomlaHelpPage(){
+		click(driver,helpSpan);
+		for(String winHandle : driver.getWindowHandles()){
+		    driver.switchTo().window(winHandle);
+		}
+		return pageFactory.getJoomlaHelpPage(driver);
 	}
 	
 	public void searchArticle(String articleTitle, String author, String displayNumber){
@@ -105,4 +116,5 @@ public class articleManagerArticlePage extends _common.absPage {
 	private String checkAllArticlesCheckbox = "//input[@title='Check All']";
 	private String trashSpan = "//span[@class='icon-32-trash']";
 	private String archiveSpan = "//span[@class='icon-32-archive']";
+	private String helpSpan = "//span[@class='icon-32-help']";
 }

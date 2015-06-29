@@ -1,6 +1,8 @@
 package _common;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class browser {
@@ -18,5 +20,10 @@ public class browser {
 	public static void close()
 	{
 		driver.close();
+	}
+	
+	public static void backToMainWindow(){
+		driver.close();
+		driver.switchTo().window(".*");
 	}
 }

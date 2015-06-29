@@ -26,4 +26,8 @@ public class pageFactory {
 	public static addNewCategoryPage getNewCategory(WebDriver driver){
 		return new addNewCategoryPage(driver);
 	}
+	
+	public static joomlaHelpPage getJoomlaHelpPage(WebDriver driver){
+		return new joomlaHelpPage(driver);
+	}
 }
