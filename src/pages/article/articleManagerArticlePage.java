@@ -85,6 +85,12 @@ public class articleManagerArticlePage extends _common.absPage {
 		return actualStatus;
 	}
 	
+	public void deleteArticle(String articleTitle){
+		clickTableCell(driver, "//a[contains(text(),'"+ articleTitle+ "')]/../preceding-sibling::td/input");
+		click(driver,trashSpan);
+		waitForPageLoad(driver);
+	}
+	
 	public void deleteAllArticles(){
 		click(driver,checkAllArticlesCheckbox);
 		click(driver,trashSpan);
