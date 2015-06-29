@@ -1,9 +1,9 @@
 package _common;
 
 import org.openqa.selenium.WebDriver;
-
 import article.articleManagerArticle;
 import article.newArticlePage;
+import categoryManager.*;
 
 
 public class pageFactory {
@@ -21,5 +21,9 @@ public class pageFactory {
 	
 	public static articleManagerArticle getArticleManagerArticlePage(WebDriver driver){
 		return new articleManagerArticle(driver);
+	}
+	
+	public static addNewCategoryPage getNewCategory(WebDriver driver){
+		return new addNewCategoryPage(driver);
 	}
 }
