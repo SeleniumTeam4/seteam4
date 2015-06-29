@@ -22,8 +22,4 @@ public class browser {
 		driver.close();
 	}
 	
-	public static void backToMainWindow(){
-		driver.close();
-		driver.switchTo().window(".*");
-	}
 }

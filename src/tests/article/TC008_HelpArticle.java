@@ -1,5 +1,7 @@
 package article;
 
+import java.util.Set;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -35,11 +37,13 @@ public class TC008_HelpArticle {
 		
 		objArticleManagerArticle = objhomepage.goToArticleManagerArticlePage();
 		
+		String mainWindow = objArticleManagerArticle.driver.getWindowHandle();
+		
 		objJoomlaHelpPage = objArticleManagerArticle.goToJoomlaHelpPage();
 		
 		Assert.assertEquals(objJoomlaHelpPage.getPageTitle(), "Joomla! Help");
 		
-		browser.backToMainWindow();
+		driver.switchTo().window(mainWindow);
 	}
 	
 	@AfterMethod
