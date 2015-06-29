@@ -33,37 +33,40 @@ public class TC003 {
 		Enter valid username into Username field
 		Enter valid password into Password field
 		Click on 'Log in' button*/
-		
 		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		
 		/*Select Content > Article Manager
 		Click on 'New' icon of the top right toolbar*/
-		
 		objNewArticlePage = objhomepage.clickAddNewArticle();
 		
 		/*Enter a title on 'Title' field
 		Select an item from the 'Category' dropdown list
+		Select 'Unpublished' item from 'Status' dropdown list
 		Enter value on 'Article Text' text area*/
-				
 		objNewArticlePage.createNewArticle("selenium team 4 tc3 "+currentDate,"Triet content","Unpublished");
 		
 		//Click on 'Save & Close' icon of the top right toolbar
-		
 		objArticleManagerArticle = objNewArticlePage.clickSaveAndCloseButton();
 		
 		//Verify the article is saved successfully
-		
+		//Verify saved message appear
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
 		
-		//objAbsPage.waitForPageLoad(driver);
+		//Filter article by author
 		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid,"All");
-		//objAbsPage.waitForPageLoad(driver);
+		
+		//Verify article displays
 		Assert.assertEquals(objArticleManagerArticle.checkArticleExists("selenium team 4 tc3 "+currentDate), true, "Article saved successfully");
 		
+		/*Check on the recently added article's checkbox
+		Click on 'Publish' icon of the top right toolbar*/
 		objArticleManagerArticle.publishArticle("selenium team 4 tc3 "+currentDate);
 		
+		//Verify the article is published successfully
+		//Verify article published message displays
 		Assert.assertEquals(objArticleManagerArticle.checkArticlePublishedMessageAppear(), true, "article published message appears");
 		
+		//Verify article status is published
 		Assert.assertEquals(objArticleManagerArticle.getArticleState("selenium team 4 tc3 "+currentDate), "state publish", "article is published");
 		
 	}
