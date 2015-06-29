@@ -22,6 +22,11 @@ public class articleManagerArticlePage extends _common.absPage {
 		waitForControl(driver, "//form[@id='adminForm']/table/tbody");
 	}
 	
+	public void searchArticleByStatus(String articleStatus){
+		select(driver, statusDropdown, articleStatus);
+		waitForPageLoad(driver);
+	}
+	
 	public boolean checkArticleExists(String articleTitle){
 		
 		WebElement articleExist = driver.findElement(By.xpath("//a[contains(text(),'" + articleTitle+ "')]"));
@@ -63,6 +68,17 @@ public class articleManagerArticlePage extends _common.absPage {
 		waitForPageLoad(driver);
 	}
 	
+	public void archiveArticle(String articleTitle){
+		clickTableCell(driver, "//a[contains(text(),'"+ articleTitle+ "')]/../preceding-sibling::td/input");
+		click(driver,archiveSpan);
+		waitForPageLoad(driver);
+	}
+	
+	public boolean checkArticleManagerPageMessage(String expectedMessage){
+		boolean messageExist = driver.getPageSource().contains(expectedMessage);
+		return messageExist;
+	}
+	
 	public String getArticleState(String articleTitle){
 		WebElement status = driver.findElement(By.xpath("//a[contains(text(),'"+ articleTitle+ "')]/../following-sibling::td//a/span"));
 		String actualStatus = status.getAttribute("class");
@@ -82,4 +98,5 @@ public class articleManagerArticlePage extends _common.absPage {
 	private String statusDropdown = "//select[@name='filter_published']";
 	private String checkAllArticlesCheckbox = "//input[@title='Check All']";
 	private String trashSpan = "//span[@class='icon-32-trash']";
+	private String archiveSpan = "//span[@class='icon-32-archive']";
 }
