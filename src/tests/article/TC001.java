@@ -17,7 +17,7 @@ public class TC001 {
 	private absPage objAbsPage = new absPage();
 	private homePage objhomepage;
 	private newArticlePage objNewArticlePage;
-	private articleManagerArticle objArticleManagerArticle;
+	private articleManagerArticlePage objArticleManagerArticle;
 	String currentDate = objAbsPage.getCurrentDate();
 	
 	@BeforeMethod

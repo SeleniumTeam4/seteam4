@@ -3,7 +3,7 @@ package _common;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import article.articleManagerArticle;
+import article.articleManagerArticlePage;
 import article.newArticlePage;
 import categoryManager.*;
 import _common.pageFactory;
@@ -14,7 +14,7 @@ public class homePage extends _common.absPage {
 		this.driver = driver;
 	}
 	
-	public articleManagerArticle goToArticleManagerArticlePage(){
+	public articleManagerArticlePage goToArticleManagerArticlePage(){
 		click(driver, contentMenu);
 		click(driver, articleManagerMenuItem);
 		return pageFactory.getArticleManagerArticlePage(driver);

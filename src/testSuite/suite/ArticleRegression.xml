@@ -5,4 +5,10 @@
 			<package name = "article"></package>
 		</packages>
 	</test>
+	
+	<test name = "close browser">
+		<classes>
+			<class name = "_common.cleanUp"></class>
+		</classes>
+	</test>
 </suite>

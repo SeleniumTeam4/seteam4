@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.thoughtworks.selenium.webdriven.commands.WaitForPageToLoad;
 
-public class articleManagerArticle extends _common.absPage {
+public class articleManagerArticlePage extends _common.absPage {
 	WebDriver driver;
-	public articleManagerArticle(WebDriver driver){
+	public articleManagerArticlePage(WebDriver driver){
 		this.driver = driver;
 	}
 	

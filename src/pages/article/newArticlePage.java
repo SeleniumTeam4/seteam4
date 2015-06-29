@@ -26,7 +26,7 @@ public class newArticlePage extends _common.absPage {
 		type(driver,aritleContentTextbox,articleContent);
 	}
 	
-	public articleManagerArticle clickSaveAndCloseButton(){
+	public articleManagerArticlePage clickSaveAndCloseButton(){
 		waitForControl(driver, saveAndCloseButton);
 		driver.findElement(By.xpath(saveAndCloseButton)).click();
 		return pageFactory.getArticleManagerArticlePage(driver);
