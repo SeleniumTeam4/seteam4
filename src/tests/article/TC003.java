@@ -27,7 +27,7 @@ public class TC003 {
 				
 	}
 	
-	@Test
+	@Test(description = "user can publish an unpublished article")
 	public void unPublishedArticle(){
 		/*Navigate to the URL: http://vntesters.com/Joomla/administrator
 		Enter valid username into Username field
