@@ -1,8 +1,10 @@
-package _common;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class joomlaHelpPage extends _common.absPage {
+import commonActions.commonActions;
+
+public class joomlaHelpPage extends commonActions {
 	WebDriver driver;
 	public joomlaHelpPage(WebDriver driver){
 		this.driver = driver;

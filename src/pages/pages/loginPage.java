@@ -1,21 +1,23 @@
-package _common;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 
+import commonActions.commonActions;
 
-public class loginPage extends _common.absPage{
+
+public class loginPage extends commonActions{
 	
 	WebDriver driver;
 	public loginPage(WebDriver driver){
 		this.driver = driver;
 	}
 	
-	public homePage login(String user, String pass){
+	public absPage login(String user, String pass){
 		waitForControl(driver, userNameTextbox);
 		type(driver, userNameTextbox, user);
 		type(driver, passwordTextbox, pass);
 		click(driver, loginButton);
-		return pageFactory.getHomePage(driver);
+		return pageFactory.getAbsPage(driver);
 	}
 		
 	private String userNameTextbox = "//input[@id='mod-login-username']";

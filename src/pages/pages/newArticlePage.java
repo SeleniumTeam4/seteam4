@@ -1,11 +1,13 @@
-package article;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import _common.pageFactory;
+import commonActions.commonActions;
 
-public class newArticlePage extends _common.absPage {
+
+
+public class newArticlePage extends commonActions {
 	WebDriver driver;
 	public newArticlePage(WebDriver driver){
 		this.driver = driver;

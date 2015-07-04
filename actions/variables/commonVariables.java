@@ -1,4 +1,4 @@
-package dataTest;
+package variables;
 
 public class commonVariables {
 	//Use below line if running at company

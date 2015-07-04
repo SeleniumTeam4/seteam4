@@ -5,16 +5,19 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import dataTest.commonVariables;
-import _common.absPage;
-import _common.browser;
-import _common.homePage;
-import _common.loginPage;
+
+import pages.absPage;
+import pages.articleManagerArticlePage;
+import pages.browser;
+import pages.homePage;
+import pages.loginPage;
+import pages.newArticlePage;
+import variables.commonVariables;
 
 public class TC004_UnpublishArticle {
 	WebDriver driver;
 	private loginPage objadminLogin = new loginPage(browser.getDriver());
-	private absPage objAbsPage = new absPage();
+	private absPage objAbsPage = new absPage(driver);
 	private homePage objhomepage;
 	private newArticlePage objNewArticlePage;
 	private articleManagerArticlePage objArticleManagerArticle;
@@ -23,7 +26,7 @@ public class TC004_UnpublishArticle {
 	@BeforeMethod
 	public void beforeMethod(){
 		browser.getDriver();
-		browser.open(dataTest.commonVariables.initialPage);
+		browser.open(variables.commonVariables.initialPage);
 				
 	}
 	
@@ -33,11 +36,11 @@ public class TC004_UnpublishArticle {
 		Enter valid username into Username field
 		Enter valid password into Password field
 		Click on 'Log in' button*/
-		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
+		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		
 		/*Select Content > Article Manager
 		Click on 'New' icon of the top right toolbar*/
-		objNewArticlePage = objhomepage.clickAddNewArticle();
+		objNewArticlePage = objAbsPage.clickAddNewArticle();
 		
 		/*Enter a title on 'Title' field
 		Select an item from the 'Category' dropdown list

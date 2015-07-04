@@ -1,16 +1,12 @@
-package article;
+package pages;
 
+import java.text.Format;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import commonActions.commonActions;
 
-import _common.joomlaHelpPage;
-import _common.pageFactory;
-
-import com.thoughtworks.selenium.webdriven.commands.WaitForPageToLoad;
-
-public class articleManagerArticlePage extends _common.absPage {
+public class articleManagerArticlePage extends commonActions {
 	WebDriver driver;
 	public articleManagerArticlePage(WebDriver driver){
 		this.driver = driver;
@@ -41,7 +37,6 @@ public class articleManagerArticlePage extends _common.absPage {
 	public boolean checkArticleExists(String articleTitle){
 		
 		WebElement articleExist = driver.findElement(By.xpath("//a[contains(text(),'" + articleTitle+ "')]"));
-		
 		if (articleExist == null){
 		
 		return false;

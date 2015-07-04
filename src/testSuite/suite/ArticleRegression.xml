@@ -8,7 +8,7 @@
 	
 	<test name = "close browser">
 		<classes>
-			<class name = "_common.cleanUp"></class>
+			<class name = "cleanup.cleanUp"></class>
 		</classes>
 	</test>
 </suite>

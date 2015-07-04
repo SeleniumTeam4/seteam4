@@ -1,12 +1,16 @@
-package _common;
+package pages;
 
 import org.openqa.selenium.WebDriver;
-import article.articleManagerArticlePage;
-import article.newArticlePage;
+
 import categoryManager.*;
 
 
 public class pageFactory {
+	
+	public static absPage getAbsPage(WebDriver driver){
+		return new absPage(driver);
+	}
+	
 	public static loginPage getLoginPage(WebDriver driver){
 		return new loginPage(driver);
 	}

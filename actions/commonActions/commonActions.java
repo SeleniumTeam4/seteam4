@@ -1,4 +1,5 @@
-package _common;
+package commonActions;
+
 
 import java.util.concurrent.TimeUnit;
 import java.text.DateFormat;
@@ -10,8 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class absPage {
-			
+public class commonActions {
 	public void waitForControl(WebDriver driver, String controlName){
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebElement element = findElement(driver, controlName);
@@ -59,5 +59,4 @@ public class absPage {
 		String date1= dateFormat.format(date);
 		return date1;
 	}
-	 
 }

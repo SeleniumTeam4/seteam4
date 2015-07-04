@@ -1,10 +1,14 @@
-package _common;
+package cleanup;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import _common.absPage;
-import dataTest.commonVariables;
+
+import pages.absPage;
+import pages.browser;
+import pages.homePage;
+import pages.loginPage;
+import variables.commonVariables;
 
 public class loginTest {
 	WebDriver driver;
@@ -16,7 +20,7 @@ public class loginTest {
 	@BeforeMethod
 	public void beforeMethod(){
 		browser.getDriver();
-		browser.open(dataTest.commonVariables.initialPage);
+		browser.open(variables.commonVariables.initialPage);
 		//common.waitForControl(driver, adminLoginPage.userNameTextbox);
 		//objadminLogin = PageFactory.getAdminLogin(driver);
 		
@@ -25,8 +29,8 @@ public class loginTest {
 	
 	@Test
 	public void loginValidCredential(){
-		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
-		objadminLogin = objhomepage.LogOut();
+		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
+		objadminLogin = objAbsPage.LogOut();
 			
 	}
 	

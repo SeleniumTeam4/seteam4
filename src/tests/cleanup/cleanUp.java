@@ -1,19 +1,23 @@
-package _common;
+package cleanup;
 
-import _common.browser;
-import article.articleManagerArticlePage;
-import article.newArticlePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-import dataTest.commonVariables;
+import pages.absPage;
+import pages.articleManagerArticlePage;
+import pages.browser;
+import pages.homePage;
+import pages.loginPage;
+import pages.newArticlePage;
+import variables.commonVariables;
+
 
 public class cleanUp {
 	WebDriver driver;
 	private loginPage objadminLogin = new loginPage(browser.getDriver());
-	private absPage objAbsPage = new absPage();
+	private absPage objAbsPage;
 	private homePage objhomepage;
 	private newArticlePage objNewArticlePage;
 	private articleManagerArticlePage objArticleManagerArticle;
@@ -21,9 +25,9 @@ public class cleanUp {
 	@Test
 	public void closeAllActiveSession(){
 		browser.getDriver();
-		browser.open(dataTest.commonVariables.initialPage);
-		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
-		objArticleManagerArticle = objhomepage.goToArticleManagerArticlePage();
+		browser.open(variables.commonVariables.initialPage);
+		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
+		objArticleManagerArticle = objAbsPage.goToArticleManagerArticlePage();
 		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid, "All");
 		objArticleManagerArticle.deleteAllArticles();
 		browser.close();
