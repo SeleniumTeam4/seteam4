@@ -37,14 +37,16 @@ public class TC008_HelpArticle {
 		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		
 		objArticleManagerArticle = objAbsPage.goToArticleManagerArticlePage();
-		
-		String mainWindow = driver.getWindowHandle();
-		
+				
 		objJoomlaHelpPage = objArticleManagerArticle.goToJoomlaHelpPage();
 		
 		Assert.assertEquals(objJoomlaHelpPage.getPageTitle(), "Joomla! Help");
 		
-		driver.switchTo().window(mainWindow);
+		//objAbsPage = objJoomlaHelpPage.returnMainPage();
+		
+		driver = driver.switchTo().defaultContent();
+		
+		objAbsPage.LogOut();
 	}
 	
 	@AfterMethod

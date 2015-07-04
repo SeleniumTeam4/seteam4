@@ -14,4 +14,9 @@ public class joomlaHelpPage extends commonActions {
 		String title = driver.getTitle();
 		return title;
 	}
+	
+	public absPage returnMainPage(){
+		driver.switchTo().defaultContent();
+		return pageFactory.getAbsPage(driver);
+	}
 }
