@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src/pages"/>
 	<classpathentry kind="src" path="src/tests"/>
 	<classpathentry kind="src" path="src/testSuite"/>
-	<classpathentry kind="src" path="actions"/>
+	<classpathentry kind="src" path="src/actions"/>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="libs/selenium-java-2.46.0.jar"/>
 	<classpathentry kind="lib" path="libs/selenium-server-standalone-2.46.0.jar"/>
