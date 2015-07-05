@@ -11,6 +11,18 @@ public class articleManagerArticlePage extends commonActions {
 		this.driver = driver;
 	}
 	
+	public articleContentPage goToArticleContentPage(String type){
+		if (type == "new"){
+			click(driver,newSpan);
+		}
+		
+		if (type=="edit"){
+			click(driver,editSpan);
+		}
+		waitForPageLoad(driver);
+		return pageFactory.getArticleContentPage(driver);
+	}
+	
 	public joomlaHelpPage goToJoomlaHelpPage(){
 		click(driver,helpSpan);
 		for(String winHandle : driver.getWindowHandles()){
@@ -142,4 +154,6 @@ public class articleManagerArticlePage extends commonActions {
 	private String accessDropdown = "//select[@name='filter_access']";
 	private String publishIcon = "//span[@class='icon-32-publish']";
 	private String unPublishIcon = "//span[@class='icon-32-unpublish']";
+	private String newSpan = "//span[@class='icon-32-new']";
+	private String editSpan = "//span[@class='icon-32-edit']";
 }

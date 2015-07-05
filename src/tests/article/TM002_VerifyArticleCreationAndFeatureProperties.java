@@ -31,7 +31,8 @@ public class TM002_VerifyArticleCreationAndFeatureProperties {
 	public void TC017(){
 		browser.open(variables.commonVariables.initialPage);		
 		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
-		obArticleContentPage = objAbsPage.goToArticleContentPage("new");
+		objArticleManagerArticle = objAbsPage.goToArticleManagerArticlePage();
+		obArticleContentPage = objArticleManagerArticle.goToArticleContentPage("new");
 		obArticleContentPage.articleContent(articleTitle,"Triet","Unpublished","Public");
 		objArticleManagerArticle = obArticleContentPage.clickSaveAndCloseButton();
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
