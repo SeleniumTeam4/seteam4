@@ -19,6 +19,7 @@ public class absPage extends commonActions {
 	}
 	
 	public articleContentPage goToArticleContentPage(String type){
+		goToArticleManagerArticlePage();
 		if (type == "new"){
 			click(driver,newSpan);
 		}
