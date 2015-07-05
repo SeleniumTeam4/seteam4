@@ -17,7 +17,7 @@ public class TM001_VerifyArticleCreationDeleteSearchAndPropertiesEditable {
 	WebDriver driver;
 	private loginPage objadminLogin = new loginPage(browser.getDriver());
 	private absPage objAbsPage = new absPage(driver);
-	private articleContentPage obArticleContentPage;
+	private articleContentPage objArticleContentPage;
 	private articleManagerArticlePage objArticleManagerArticle = new articleManagerArticlePage(driver);
 	String currentDate = objAbsPage.getCurrentDate();
 	String articleTitle = "Selenium Team 4" + currentDate;
@@ -39,9 +39,9 @@ public class TM001_VerifyArticleCreationDeleteSearchAndPropertiesEditable {
 		browser.open(variables.commonVariables.initialPage);		
 		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		objArticleManagerArticle = objAbsPage.goToArticleManagerArticlePage();
-		obArticleContentPage = objArticleManagerArticle.goToArticleContentPage("new");
-		obArticleContentPage.articleContent(articleTitle,"Triet","Unpublished","Registered");
-		objArticleManagerArticle = obArticleContentPage.clickSaveAndCloseButton();
+		objArticleContentPage = objArticleManagerArticle.goToArticleContentPage(null,"new");
+		objArticleContentPage.articleContent(articleTitle,"Triet","Unpublished","Registered",null);
+		objArticleManagerArticle = objArticleContentPage.clickSaveAndCloseButton();
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
 		objArticleManagerArticle.searchArticle(articleTitle,commonVariables.userNameValid,"All");
 		Assert.assertEquals(objArticleManagerArticle.checkArticleExists(articleTitle), true, "Article saved successfully");		

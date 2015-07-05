@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import commonActions.commonActions;
 
 public class articleManagerArticlePage extends commonActions {
@@ -11,12 +13,13 @@ public class articleManagerArticlePage extends commonActions {
 		this.driver = driver;
 	}
 	
-	public articleContentPage goToArticleContentPage(String type){
+	public articleContentPage goToArticleContentPage(String articleTitle, String type){
 		if (type == "new"){
 			click(driver,newSpan);
 		}
 		
 		if (type=="edit"){
+			clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle));
 			click(driver,editSpan);
 		}
 		waitForPageLoad(driver);
@@ -109,6 +112,21 @@ public class articleManagerArticlePage extends commonActions {
 		waitForPageLoad(driver);
 	}
 	
+	public void featureArticle(String articleTitle){
+		clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle));
+		click(driver,featureSpan);	
+	}
+	
+	public void unFeatureArticle(String articleTitle){
+		clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../following-sibling::td//a/img", articleTitle));
+	}
+	
+	public void checkArticleFeature(String articleTitle, String expected){
+		WebElement element = driver.findElement(By.xpath(String.format("//a[contains(text(),'%s')]/../following-sibling::td//a/img", articleTitle)));
+		String featureStatus = element.getAttribute("alt");
+		Assert.assertEquals(featureStatus, expected);
+	}
+	
 	public void archiveArticle(String articleTitle){
 		clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle));
 		click(driver,archiveSpan);
@@ -156,4 +174,5 @@ public class articleManagerArticlePage extends commonActions {
 	private String unPublishIcon = "//span[@class='icon-32-unpublish']";
 	private String newSpan = "//span[@class='icon-32-new']";
 	private String editSpan = "//span[@class='icon-32-edit']";
+	private String featureSpan = "//span[@class='icon-32-featured']";
 }

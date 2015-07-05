@@ -16,7 +16,7 @@ public class TM002_VerifyArticleCreationAndFeatureProperties {
 	WebDriver driver;
 	private loginPage objadminLogin = new loginPage(browser.getDriver());
 	private absPage objAbsPage = new absPage(driver);
-	private articleContentPage obArticleContentPage;
+	private articleContentPage objArticleContentPage;
 	private articleManagerArticlePage objArticleManagerArticle = new articleManagerArticlePage(driver);
 	String currentDate = objAbsPage.getCurrentDate();
 	String articleTitle = "Selenium Team 4" + currentDate;
@@ -32,9 +32,9 @@ public class TM002_VerifyArticleCreationAndFeatureProperties {
 		browser.open(variables.commonVariables.initialPage);		
 		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		objArticleManagerArticle = objAbsPage.goToArticleManagerArticlePage();
-		obArticleContentPage = objArticleManagerArticle.goToArticleContentPage("new");
-		obArticleContentPage.articleContent(articleTitle,"Triet","Unpublished","Public");
-		objArticleManagerArticle = obArticleContentPage.clickSaveAndCloseButton();
+		objArticleContentPage = objArticleManagerArticle.goToArticleContentPage(null,"new");
+		objArticleContentPage.articleContent(articleTitle,"Triet","Unpublished","Public",null);
+		objArticleManagerArticle = objArticleContentPage.clickSaveAndCloseButton();
 		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
 		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid,"All");
 		objArticleManagerArticle.searchArticleByAccess("Public");
@@ -43,6 +43,19 @@ public class TM002_VerifyArticleCreationAndFeatureProperties {
 	
 	@Test(description = "  user can edit an article", priority = 2)
 	public void TC002(){
-		
+		objArticleContentPage = objArticleManagerArticle.goToArticleContentPage(articleTitle,"edit");
+		objArticleContentPage.articleContent(modifiedArticleTile, "this is modified article content","Unpublished","Public", "- - Park Site");
+		objArticleContentPage.clickSaveAndCloseButton();
+		Assert.assertEquals(objArticleManagerArticle.checkArticleSavedMessageAppear(), true, "Article saved message appears");
+		objArticleManagerArticle.searchArticle(null,commonVariables.userNameValid,"All");
+		Assert.assertEquals(objArticleManagerArticle.checkArticleExists(modifiedArticleTile), true, "Article exists");
+	}
+	
+	@Test(description = "  user can feature an article", priority = 3)
+	public void TC016(){
+		objArticleManagerArticle.featureArticle(modifiedArticleTile);
+		objArticleManagerArticle.checkArticleFeature(modifiedArticleTile, "Featured article");
+		objArticleManagerArticle.unFeatureArticle(modifiedArticleTile);
+		objArticleManagerArticle.checkArticleFeature(modifiedArticleTile, "Unfeatured article");
 	}
 }

@@ -20,11 +20,14 @@ public class articleContentPage extends commonActions {
 		type(driver,aritleContentTextbox,articleContent);
 	}
 	
-	public void articleContent(String articleTitle, String articleContent,String statusType,String access){
+	public void articleContent(String articleTitle, String articleContent,String statusType,String access,String category){
 		waitForControl(driver, titleTextbox);
 		type(driver,titleTextbox,articleTitle);
 		select(driver, statusDropDown, statusType);
 		select(driver, accessDropdown, access);
+		if (category != null){
+		select(driver,categoryDropdown,category);
+		}
 		driver.findElement(By.xpath(toggleEditorLink)).click();
 		type(driver,aritleContentTextbox,articleContent);
 	}
@@ -41,5 +44,6 @@ public class articleContentPage extends commonActions {
 	private String saveAndCloseButton = "//span[@class ='icon-32-save']";
 	private String statusDropDown = "//select[@id='jform_state']";
 	private String accessDropdown = "//select[@id='jform_access']";
+	private String categoryDropdown = "//select[@id='jform_catid']";
 	
 }

@@ -6,8 +6,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -30,6 +32,7 @@ public class commonActions {
 	
 	public void type(WebDriver driver, String controlName, String value){
 		WebElement element = findElement(driver, controlName);
+		element.sendKeys(Keys.chord(Keys.CONTROL,"a"));
 		element.sendKeys(value);
 	}
 	
@@ -37,8 +40,7 @@ public class commonActions {
 		Select element = new Select(findElement(driver, controlName));
 		element.selectByVisibleText(value);
 	}
-	
-	
+			
 	public WebElement findElement(WebDriver driver, String control){
 		return driver.findElement(By.xpath(control));
 	}
