@@ -18,10 +18,16 @@ public class absPage extends commonActions {
 		return pageFactory.getArticleManagerArticlePage(driver);
 	}
 	
-	public newArticlePage clickAddNewArticle(){
-		goToArticleManagerArticlePage();
-		driver.findElement(By.xpath(newSpan)).click();
-		return pageFactory.getNewArticlePage(driver);
+	public articleContentPage goToArticleContentPage(String type){
+		if (type == "new"){
+			click(driver,newSpan);
+		}
+		
+		if (type == "edit"){
+			click(driver,editSpan);
+		}
+		
+		return pageFactory.getArticleContentPage(driver);
 	}
 	
 	public loginPage LogOut(){
@@ -36,5 +42,6 @@ public class absPage extends commonActions {
 	private String contentMenu = "//a[contains(text(),'Content')]";
 	private String articleManagerMenuItem = "//a[contains(text(),'Article Manager')]";
 	private String newSpan = "//span[@class='icon-32-new']";
+	private String editSpan = "//span[@class='icon-32-edit']";
  
 }

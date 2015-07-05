@@ -1,6 +1,5 @@
 package pages;
 
-import java.text.Format;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,9 +23,10 @@ public class articleManagerArticlePage extends commonActions {
 		waitForControl(driver, filterTextbox);
 		select(driver, authorDropdown, author);
 		select(driver, displayNumberDropdown, displayNumber);
+		click(driver,clearButton);
 		type(driver, filterTextbox, articleTitle);
 		click(driver, searchButton);
-		waitForControl(driver, "//form[@id='adminForm']/table/tbody");
+		waitForControl(driver, articleTable);
 	}
 	
 	public void searchArticleByStatus(String articleStatus){
@@ -34,9 +34,19 @@ public class articleManagerArticlePage extends commonActions {
 		waitForPageLoad(driver);
 	}
 	
+	public void searchArticleByCategory(String category){
+		select(driver, categoryDropdown, category);
+		waitForPageLoad(driver);
+	}
+	
+	public void searchArticleByAccess(String access){
+		select(driver, accessDropdown, access);
+		waitForPageLoad(driver);
+	}
+	
 	public boolean checkArticleExists(String articleTitle){
 		
-		WebElement articleExist = driver.findElement(By.xpath("//a[contains(text(),'" + articleTitle+ "')]"));
+		WebElement articleExist = driver.findElement(By.xpath(String.format("//a[contains(text(),'%s')]", articleTitle)));
 		if (articleExist == null){
 		
 		return false;
@@ -64,18 +74,31 @@ public class articleManagerArticlePage extends commonActions {
 		return messageExist;
 	}
 	
-	public void publishArticle(String articleName){
-		clickTableCell(driver, "//a[contains(text(),'"+ articleName+ "')]/../following-sibling::td//a/span");
+	public void publishArticle(String articleName, String use){
+		if (use == "toolbar"){
+			clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleName));
+			click(driver,publishIcon);
+		}
+		
+		if (use == "status column") {
+			clickTableCell(driver,String.format("//a[contains(text(),'%s')]/../following-sibling::td//a/span", articleName));
+		}	
 		waitForPageLoad(driver);
 	}
 	
-	public void unPublishArticle(String articleTitle){
-		clickTableCell(driver, "//a[contains(text(),'"+ articleTitle+ "')]/../following-sibling::td//a/span");
+	public void unPublishArticle(String articleTitle, String use){
+		if (use == "toolbar"){
+			clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle));
+			click(driver,unPublishIcon);	
+		}
+		if (use == "status column") {
+			clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../following-sibling::td//a/span", articleTitle));
+		}
 		waitForPageLoad(driver);
 	}
 	
 	public void archiveArticle(String articleTitle){
-		clickTableCell(driver, "//a[contains(text(),'"+ articleTitle+ "')]/../preceding-sibling::td/input");
+		clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle));
 		click(driver,archiveSpan);
 		waitForPageLoad(driver);
 	}
@@ -86,13 +109,13 @@ public class articleManagerArticlePage extends commonActions {
 	}
 	
 	public String getArticleState(String articleTitle){
-		WebElement status = driver.findElement(By.xpath("//a[contains(text(),'"+ articleTitle+ "')]/../following-sibling::td//a/span"));
+		WebElement status = driver.findElement(By.xpath(String.format("//a[contains(text(),'%s')]/../following-sibling::td//a/span", articleTitle)));
 		String actualStatus = status.getAttribute("class");
 		return actualStatus;
 	}
 	
 	public void deleteArticle(String articleTitle){
-		clickTableCell(driver, "//a[contains(text(),'"+ articleTitle+ "')]/../preceding-sibling::td/input");
+		clickTableCell(driver, String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle));
 		click(driver,trashSpan);
 		waitForPageLoad(driver);
 	}
@@ -103,8 +126,11 @@ public class articleManagerArticlePage extends commonActions {
 		waitForPageLoad(driver);
 	}
 	
+	//private String articleTitleLink = String.format("//a[contains(text(),'%s')]/../preceding-sibling::td/input", articleTitle) 
+	private String articleTable = "//form[@id='adminForm']/table/tbody";
 	private String filterTextbox = "//input[@id='filter_search']";
 	private String searchButton = "//button[@class='btn']";
+	private String clearButton = "//button[@type='button']";
 	private String authorDropdown = "//select[@name='filter_author_id']";
 	private String displayNumberDropdown = "//select[@id='limit']";
 	private String statusDropdown = "//select[@name='filter_published']";
@@ -112,4 +138,8 @@ public class articleManagerArticlePage extends commonActions {
 	private String trashSpan = "//span[@class='icon-32-trash']";
 	private String archiveSpan = "//span[@class='icon-32-archive']";
 	private String helpSpan = "//span[@class='icon-32-help']";
+	private String categoryDropdown = "//select[@name='filter_category_id']";
+	private String accessDropdown = "//select[@name='filter_access']";
+	private String publishIcon = "//span[@class='icon-32-publish']";
+	private String unPublishIcon = "//span[@class='icon-32-unpublish']";
 }

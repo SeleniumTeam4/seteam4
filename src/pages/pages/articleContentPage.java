@@ -7,23 +7,24 @@ import commonActions.commonActions;
 
 
 
-public class newArticlePage extends commonActions {
+public class articleContentPage extends commonActions {
 	WebDriver driver;
-	public newArticlePage(WebDriver driver){
+	public articleContentPage(WebDriver driver){
 		this.driver = driver;
 	}
 	
-	public void createNewArticle(String articleTitle, String articleContent){
+	public void articleContent(String articleTitle, String articleContent){
 		waitForControl(driver, titleTextbox);
 		type(driver,titleTextbox,articleTitle);
 		driver.findElement(By.xpath(toggleEditorLink)).click();
 		type(driver,aritleContentTextbox,articleContent);
 	}
 	
-	public void createNewArticle(String articleTitle, String articleContent,String statusType){
+	public void articleContent(String articleTitle, String articleContent,String statusType,String access){
 		waitForControl(driver, titleTextbox);
 		type(driver,titleTextbox,articleTitle);
 		select(driver, statusDropDown, statusType);
+		select(driver, accessDropdown, access);
 		driver.findElement(By.xpath(toggleEditorLink)).click();
 		type(driver,aritleContentTextbox,articleContent);
 	}
@@ -39,4 +40,6 @@ public class newArticlePage extends commonActions {
 	private String toggleEditorLink = "//a[@title='Toggle editor']";
 	private String saveAndCloseButton = "//span[@class ='icon-32-save']";
 	private String statusDropDown = "//select[@id='jform_state']";
+	private String accessDropdown = "//select[@id='jform_access']";
+	
 }

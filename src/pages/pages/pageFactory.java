@@ -19,8 +19,8 @@ public class pageFactory {
 		return new homePage(driver);
 	}
 	
-	public static newArticlePage getNewArticlePage(WebDriver driver){
-		return new newArticlePage(driver);
+	public static articleContentPage getArticleContentPage(WebDriver driver){
+		return new articleContentPage(driver);
 	}
 	
 	public static articleManagerArticlePage getArticleManagerArticlePage(WebDriver driver){
