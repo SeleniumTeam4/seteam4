@@ -38,4 +38,13 @@ public class pageFactory {
 	public static joomlaHelpPage getJoomlaHelpPage(WebDriver driver){
 		return new joomlaHelpPage(driver);
 	}
+	
+	public static contactManagerPage getContactManagerPage(WebDriver driver){
+		return new contactManagerPage(driver);
+	}
+	
+	public static newContactPage getNewContactPage(WebDriver driver){
+		return new newContactPage(driver);
+	}
+	
 }
