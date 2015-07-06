@@ -24,6 +24,14 @@ public class commonActions {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
+//	public void selectMenuItem(WebDriver driver, String fullPath){
+//		String fullMenuPath = fullPath;
+//		boolean haveSubMenu = fullMenuPath.contains(">");
+//		while (haveSubMenu) {
+//			String menuItem = fullMenuPath.substring(0, fullMenuPath.indexOf(">")-1);
+//			click(driver, By.xpath("a[.="))
+//		}
+//	}
 	
 	public void click(WebDriver driver, String controlName){
 		WebElement element = findElement(driver, controlName);
@@ -61,4 +69,5 @@ public class commonActions {
 		String date1= dateFormat.format(date);
 		return date1;
 	}
+
 }

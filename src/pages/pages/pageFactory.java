@@ -27,8 +27,12 @@ public class pageFactory {
 		return new articleManagerArticlePage(driver);
 	}
 	
-	public static addNewCategoryPage getNewCategory(WebDriver driver){
-		return new addNewCategoryPage(driver);
+	public static categoryContentPage getContentCategoryPage(WebDriver driver){
+		return new categoryContentPage(driver);
+	}
+	
+	public static categoryManagerPage getcategoryManagerPage(WebDriver driver){
+		return new categoryManagerPage(driver);
 	}
 	
 	public static joomlaHelpPage getJoomlaHelpPage(WebDriver driver){

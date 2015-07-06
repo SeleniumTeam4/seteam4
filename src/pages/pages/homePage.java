@@ -14,12 +14,4 @@ public class homePage extends commonActions {
 		this.driver = driver;
 	}
 	
-	public addNewCategoryPage clickAddNewCategory(){
-		driver.findElement(By.xpath(categoryManagerLink)).click();
-		return pageFactory.getNewCategory(driver);
-	}
-	
-	//Interface lists:
-	private String categoryManagerLink = "//a[.='Category Manager']";
-	
 }
