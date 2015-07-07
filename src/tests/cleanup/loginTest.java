@@ -30,7 +30,7 @@ public class loginTest {
 	@Test
 	public void loginValidCredential(){
 		objAbsPage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
-		objadminLogin = objAbsPage.LogOut();
+		objadminLogin = objAbsPage.logOut();
 			
 	}
 	

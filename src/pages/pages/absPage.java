@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import commonActions.commonActions;
 
 public class absPage extends commonActions {
@@ -25,7 +22,7 @@ public class absPage extends commonActions {
 		return pageFactory.getcategoryManagerPage(driver);
 	}
 	
-	public loginPage LogOut(){
+	public loginPage logOut(){
 		waitForControl(driver, logOutLink);
 		click(driver, logOutLink);
 		return pageFactory.getLoginPage(driver);

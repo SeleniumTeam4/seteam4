@@ -2,8 +2,6 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-import categoryManager.*;
-
 
 public class pageFactory {
 	

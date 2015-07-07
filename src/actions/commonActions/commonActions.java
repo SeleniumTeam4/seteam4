@@ -9,11 +9,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class commonActions {
+import pages.browser;
+
+public class commonActions extends browser{
 	public void waitForControl(WebDriver driver, String controlName){
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebElement element = findElement(driver, controlName);
@@ -58,7 +59,7 @@ public class commonActions {
 		cell.click();
 	}
 	
-	public void checkPageMessageDisplay(WebDriver driver, String expectedMessage){
+	public void checkPageMessageDisplay(String expectedMessage){
 		boolean message = driver.getPageSource().contains(expectedMessage);
 		Assert.assertEquals(message, true);
 	}
@@ -69,5 +70,16 @@ public class commonActions {
 		String date1= dateFormat.format(date);
 		return date1;
 	}
-
+	
+	public boolean doesElementExist(WebDriver driver, By control){
+		boolean isElementExist = driver.findElement(control).isDisplayed();
+		return isElementExist;
+	}
+	
+	public void verifyElementExist(By control){
+		boolean actualResult = doesElementExist(driver, control);
+		Assert.assertEquals(actualResult, true);
+	}
+	
+	
 }
